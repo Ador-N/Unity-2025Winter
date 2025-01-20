@@ -36,7 +36,7 @@
 
 > (&#42;) 注1：如果不使用*额外的网络工具*，大陆地区下载到的 Unity Hub / Unity Editor 通常为版本号带 c 后缀的国内特供版，而不带 c 后缀的则为国际版。通常情况下两者在使用上没有明显差别，但需要注意，最新的国内版 Unity Hub 在较为明显的位置放置了“团结引擎”的下载按钮（如下图），无视即可。
 >
-> <img src="C:\Users\AdorN\AppData\Roaming\Typora\typora-user-images\image-20250119211304746.png" alt="image-20250119211304746" style="zoom:25%;" />
+> <img src="pics/image-20250119211304746.png" alt="image-20250119211304746" style="zoom:25%;" />
 >
 > (&#42;&#42;) 注2：考虑新版本可能存在的稳定性问题，本次培训暂时不以 Unity 6 为基准版本。
 
@@ -45,11 +45,11 @@
 
 2. Unity Editor 安装：安装完成后，在 Unity Hub 界面的左侧栏选择“安装”，点击右上角“安装编辑器”按钮，在“正式发行”（LTS）一栏找到需要下载的 Unity Editor（此处选择版本 2022.3.52f1c1）进行安装：
 
-   <img src="C:\Users\AdorN\AppData\Roaming\Typora\typora-user-images\image-20250119215904554.png" alt="image-20250119215904554" style="zoom:33%;" />
+   <img src="pics/image-20250119215904554.png" alt="image-20250119215904554" style="zoom:33%;" />
 
    安装时，Visual Studio 、开发平台和文档等项可视需求勾选。新版本 Unity 安装时可以直接选择简体中文配置，不需要额外汉化包。
 
-   <img src="C:\Users\AdorN\AppData\Roaming\Typora\typora-user-images\image-20250119215948789.png" alt="image-20250119215948789" style="zoom:33%;" />
+   <img src="pics/image-20250119215948789.png" alt="image-20250119215948789" style="zoom:33%;" />
 
    需要注意的是，Unity 各版本之间兼容性较差，一旦选定了一个版本进行团队开发，就要统一 Unity 版本并一直使用到项目结束。
 
@@ -107,19 +107,19 @@ TODO
 #### Unity Hub
 在Unity Hub界面，点击“新项目”，进入创建项目界面。本次培训中，我们主要以 3D 项目为例，介绍 Unity 的基本操作；同时，为了避免后半渲染部分的配置过于复杂，我们可以直接以 URP（通用渲染管线）模板创建项目：（关于渲染管线，在昨天的图形学一讲中已经初步提及，更进一步的解释详见后文介绍）
 
-<img src="C:\Users\AdorN\AppData\Roaming\Typora\typora-user-images\image-20250120001819635.png" alt="image-20250120001819635" style="zoom:33%;" />
+<img src="pics/image-20250120001819635.png" alt="image-20250120001819635" style="zoom:33%;" />
 
-<img src="C:\Users\AdorN\AppData\Roaming\Typora\typora-user-images\image-20250120003714504.png" alt="image-20250120003714504" style="zoom:33%;" />
+<img src="pics/image-20250120003714504.png" alt="image-20250120003714504" style="zoom:33%;" />
 
 左侧可以选择创建模板类型，选择“核心模板”，“Universal 3D”，在右侧点击“下载模板”。待下载结束后，可以修改合适的项目名称和位置，然后点击“创建项目”。（不要勾选“启用游戏云服务”和“使用团结云开发”）
 （注1：“游戏云服务”是 Unity 中国提供的一系列*付费*服务；“团结云开发”是指 Unity 自己开发的版本管理系统 Plastic SCM，由于安装过程较为繁琐且只适用于 Unity，感兴趣的同学们可以自行了解。培训第一天我们讲解了 git，如果在此之前还没有使用 git 的经验，推荐借助软设开发的机会熟悉一下 git 的操作）
 （注2：下文演示中使用的 Unity 是 2022.3.56f1 版本）
 
-<img src="C:\Users\AdorN\AppData\Roaming\Typora\typora-user-images\image-20250120003354507.png" alt="image-20250120003354507" style="zoom:33%;" />
+<img src="pics/image-20250120003354507.png" alt="image-20250120003354507" style="zoom:33%;" />
 
 等待一小段时间过后，我们进入了 Unity Editor 界面
 
-<img src="C:\Users\AdorN\AppData\Roaming\Typora\typora-user-images\image-20250120005214146.png" alt="image-20250120005214146" style="zoom:33%;" />
+<img src="pics/image-20250120005214146.png" alt="image-20250120005214146" style="zoom:33%;" />
 
 此时，界面右侧显示的是 URP 模板的欢迎页面，点击中部的 "Remove Readme Assets" 按钮以移除相关内容。
 
