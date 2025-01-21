@@ -53,7 +53,7 @@
 
    <img src="pics/image-20250119215948789.png" alt="image-20250119215948789" style="zoom:33%;" />
 
-   需要注意的是，Unity 各大版本之间兼容性较差。一般而言同一大版本的 LTS 版本之间差距不大，但切换大版本时通常会出现兼容性问题，因此一旦选定了一个大版本进行团队开发，就要统一 Unity 版本并一直使用到项目结束。
+   需要注意的是，Unity 各大版本之间兼容性较差。一般而言同一大版本的 LTS 版本之间差距不大，但切换大版本时通常会出现一些兼容性问题，因此一旦选定了一个大版本进行团队开发，就要统一 Unity 版本并一直使用到项目结束。
 
 3. 获取 Unity 授权的免费个人版激活许可证
 
@@ -62,10 +62,10 @@
 ## 三、创建第一个项目
 ### 0、Unity 基本知识
 #### Scene（场景）
-**Scene（场景）**是一个包含游戏世界的容器，包含了若干 **GameObject（游戏对象）**。一个游戏可能由多个场景组成，通过脚本在它们之间进行切换。例如，一个游戏可能包含 MenuScene（菜单场景）和 GameScene（游戏场景）。对于关卡类的游戏，可以为每个关卡独立创建一个游戏场景。
+**Scene（场景）** 是一个包含游戏世界的容器，包含了若干 **GameObject（游戏对象）**。一个游戏可能由多个场景组成，通过脚本在它们之间进行切换。例如，一个游戏可能包含 MenuScene（菜单场景）和 GameScene（游戏场景）。对于关卡类的游戏，可以为每个关卡独立创建一个游戏场景。
 
 #### GameObject（游戏对象）
-**GameObject（游戏对象）**是 Unity 中最基本的实体单位。它可以代表场景中的任何物件，如角色、道具、环境物体等。GameObject 之间可以存在父子关系，这里的父子关系是一种层级上的组合关系或从属关系，并非父类与子类的继承关系。
+**GameObject（游戏对象）** 是 Unity 中最基本的实体单位。它可以代表场景中的任何物件，如角色、道具、环境物体等。GameObject 之间可以存在父子关系，这里的父子关系是一种层级上的组合关系或从属关系，并非父类与子类的继承关系。
 
 #### Component（组件）
 
@@ -81,23 +81,23 @@
 
 #### Material（材质）和 Shader（着色器）
 
-**Shader（着色器）**是定义如何渲染物体的程序，主要包括顶点着色器和片段着色器。它负责计算物体的颜色、光照等效果；
-**Material（材质）**是控制游戏对象外观的资源，包含颜色、纹理、透明度等基本属性，也可以包括高光度、粗糙度、法线等物理 / 几何信息。每个材质都与一个 Shader 关联，决定物体如何与光源互动和呈现视觉效果。
+**Shader（着色器）** 是定义如何渲染物体的程序，主要包括顶点着色器和片段着色器。它负责计算物体的颜色、光照等效果；
+**Material（材质）** 是控制游戏对象外观的资源，包含颜色、纹理、透明度等基本属性，也可以包括高光度、粗糙度、法线等物理 / 几何信息。每个材质都与一个 Shader 关联，决定物体如何与光源互动和呈现视觉效果。
 
 #### Mesh（网格）/ Model（模型）
 
-**Mesh** 是 3D 模型的几何数据，包含顶点、边和面，定义物体的形状。在 Unity 中，Mesh 通过 `MeshFilter` 和 `MeshRenderer` 组件显示和渲染。通常 **Model** 指 Mesh 加上材质、动画等其他数据构成的可渲染对象。
+**Mesh** 是 3D 模型的几何数据，包含顶点、边和面，定义物体的形状。在 Unity 中，Mesh 通过 `MeshFilter` 和 `MeshRenderer` 组件显示和渲染。习惯上 **Model** 指 Mesh 加上材质、动画等其他数据构成的可渲染对象，不过区分这两者并不重要。
 
 #### Sprite（精灵）
 
-**Sprite（精灵）**是 2D 游戏中的图像对象，使用 `SpriteRenderer` 组件进行渲染。UI 元素（如按钮、图标等）也使用 Sprite 显示图像。
+**Sprite（精灵）** 是 2D 游戏中的图像对象，使用 `SpriteRenderer` 组件进行渲染。UI 元素（如按钮、图标等）也使用 Sprite 显示图像。
 
 #### Assets（资源/资产）
 项目中的所有 Prefab、脚本、材质、2D 精灵图、3D 模型/纹理、音乐、场景结构数据、配置文件等资源都被称作 **Asset**，置于项目的 Assets 文件夹中。对于规模较大的工程，应该建立规范的目录结构。
 
 ### 1、界面介绍
 #### Unity Hub
-在Unity Hub界面，点击“新项目”，进入创建项目界面。本次培训中，我们主要以 3D 项目为例，介绍 Unity 的基本操作；同时，为了避免后半渲染部分的配置过于复杂，我们直接以 URP（通用渲染管线）模板创建项目：（关于渲染管线，在昨天的图形学一讲中已经初步提及，更进一步的解释详见后文介绍）
+在Unity Hub界面，点击“新项目”，进入创建项目界面。本次培训中，我们主要以 3D 项目为例，介绍 Unity 的基本操作；同时，为了节约环境配置时间，我们直接以 URP（通用渲染管线）模板创建项目：（关于渲染管线，在昨天的图形学一讲中已经初步提及，更进一步的解释详见后文介绍）
 
 <img src="pics/image-20250120001819635.png" alt="image-20250120001819635" style="zoom:33%;" />
 
@@ -182,8 +182,6 @@
 | 动画      | `Animation`                          | 在游戏对象上播放某个固定的动画片段（Animation Clip）         |
 |           | `Animator`                           | 动画状态机，详见后文介绍                                     |
 
-#### 
-
 值得注意的是，Unity内置了强大的物理系统，可以给对象挂载组件使其符合一定物理规律。
 
 - 给游戏对象挂载 Rigidbody 组件，观察游戏对象行为
@@ -195,33 +193,34 @@
   ![image-20240130205955717](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130205955717.png)
 
 - 更改游戏对象物理材质（增加反弹、摩擦等）：新建物理材质，设置相关摩擦和弹力系数，替换掉Rigidbody 组件原物理材质。
+
 #### 2. 脚本
-1. 配置脚本编辑环境：在 Unity 中选择编辑->首选项->外部工具->外部脚本编辑器，选中 Visual Studio 或 Visual Studio Code 即可
-2. 创建一个简单的脚本（Project窗口右键->创建->C#脚本）
+1. 配置脚本编辑环境：在 Unity 中选择编辑 → 首选项 → 外部工具 → 外部脚本编辑器，选中 Visual Studio 或 Visual Studio Code 即可
+2. 创建一个简单的脚本（Project窗口右键 → 创建 → C#脚本）
 
-  ```csharp
-  using System.Collections;
-  using System.Collections.Generic;
-  using UnityEngine;
-  public class PlayerControl : MonoBehaviour
-  {
-  	// Start is called before the first frame update
-  	void Start()
-  	{
-          
-  	}
-  	// Update is called once per frame
-  	void Update()
-  	{
-          
-  	}
-  }
-  ```
-  - MonoBehavior：脚本创建时默认会挂载到游戏对象上，class 自动继承 MonoBehavior。如果该脚本不需要直接挂载到游戏对象上发挥效果，则不需要继承自MonoBehavior。
-  - void Start()：场景加载时执行一次的函数，用于初始化。
-  - void Update()：游戏运行时每一帧都会执行一次，用于实时同步游戏数据，主要代码通常都需要每一帧都执行。
+      ```csharp
+      using System.Collections;
+      using System.Collections.Generic;
+      using UnityEngine;
+      public class PlayerControl : MonoBehaviour
+      {
+      	// Start is called before the first frame update
+      	void Start()
+      	{
+      
+      	}
+      	// Update is called once per frame
+      	void Update()
+      	{
+      
+      	}
+      }
+      ```
+  - `MonoBehavior`：脚本创建时默认会挂载到游戏对象上，class 自动继承 MonoBehavior。如果该脚本不需要直接挂载到游戏对象上发挥效果，则不需要继承自MonoBehavior。
+  - `void Start()`：场景加载时执行一次的函数，用于初始化。
+  - `void Update()`：游戏运行时每一帧都会执行一次，用于实时同步游戏数据，主要代码通常都需要每一帧都执行。
 
-3. 在Start函数中写入以下代码，并将脚本挂载到 player 上
+3. 在 `Start` 函数中写入以下代码，并将脚本挂载到 player 上
 
 	```csharp
 	Debug.Log("Hello world!");
@@ -235,7 +234,7 @@
    包括 OnCollisionEnter(2D) （碰撞开始时执行）、 OnCollisionExit(2D) （碰撞结 束时执行）、 OnCollisionStay(2D) （碰撞过程中每个时间步长执行一次)
 
    ```csharp
-   private void OnCollisionEnter(Collision collision)// Collision 类，存储碰撞信息
+   private void OnCollisionEnter(Collision collision) // Collision 类，存储碰撞对象、位置等信息
    {
 		Debug.Log(name + " collided with " + collision.collider.name);
    }
@@ -244,9 +243,9 @@
    包括 OnTriggerEnter(2D) （接触开始时执行）、 OnTriggerExit(2D) （接触结束时执行）、 OnTriggerStay(2D) （接触过程中每个时间步长执行一次）
 
    ```csharp
-   private void OnTriggerStay2D(Collider2D collision)
+   private void OnTriggerStay2D(Collider2D collider) // Collider 类，仅包含碰撞体本身的信息
    {
-		Debug.Log(name + " contacting with " + collision.collider.name);
+		Debug.Log(name + " contacting with " + collider.name);
    }
    ```
 
@@ -258,11 +257,11 @@ TODO
 
 ## 五、视觉效果：材质与渲染
 
-### 0、光栅渲染管线
+### 0. 光栅渲染管线
 
-#### 此处复用 2024 *寒培*：实时渲染部分
+#### 此处复用（？） 2024 *寒培*：实时渲染部分第一节
 
-### 1、ShaderGraph
+### 1. ShaderGraph
 
 #### 此处参考往年 Unity，但是要大改
 
@@ -272,11 +271,12 @@ Toon Shading 没法直接做，放后处理那边吧
 
 #### 
 
-### 2、PBR 工作流
+### 2. PBR（Physics-Based Rendering）工作流
 
 在 2D 作品中，我们基本只需要一系列精灵图和一些简单的特效处理，就可以实现大部分的视觉效果。但是在 3D 游戏，尤其是追求物理真实感的 3D 作品中，是否仍然这么简单？
 
 回顾 BRDF 表示的渲染方程：
+
 $$
 L(\boldsymbol{x},\boldsymbol{\omega}_o)
 =\mathcal{K}_\text{S} L + L_\text{r}^\text{e}(\boldsymbol{x})
@@ -285,23 +285,43 @@ L(\boldsymbol{x},\boldsymbol{\omega}_o)
 \cdot L(\boldsymbol{x},\boldsymbol{\omega}_i)
 \cdot \cos\theta_i \, \mathrm{d} \boldsymbol{\omega}_i
 $$
-（这一块好像应该放在第0节）
 
-如果已知发射部分（即 $L_\text{s}^\text{e}$）和 BRDF（即 $f_\text{r}$），我们便能写出着色器，让渲染管线帮我们计算以上表达式。现在的问题是，如何表示这两者，即：如何对表面建模？
+如果已知发射部分（即 $L_\text{r}^\text{e}$）和 BRDF（即 $f_\text{r}$），我们便能写出片元着色器，让渲染管线帮我们计算以上表达式。现在的问题是，如何表示这两者，即：如何对物理表面建模？
 
 图形学一讲中介绍了 Lambert 漫射模型和 GGX 高光模型。现实生活中，一个表面显然并不会非黑即白地表现为“漫射”和“高光”中的一种，而往往是两种属性的混合，因此我们用这两个模型的加权求和来表示 BRDF，这便是实时渲染中常用的 Cook-Torrance BRDF：
+
 $$
 f_\text{r}(\boldsymbol{x}, -\boldsymbol{\omega}_i \rightarrow \boldsymbol{\omega}_o)
 = \frac{\boldsymbol\rho_\text{d}(\boldsymbol{x})}{\pi}
 + \frac{\boldsymbol\rho_\text{s}(\boldsymbol{x}) \cdot F\cdot D_{\alpha} \cdot G_{\alpha} }{4(\boldsymbol{n}\cdot\boldsymbol\omega_i)(\boldsymbol{n}\cdot\boldsymbol\omega_o)}
 $$
-其中，$\boldsymbol\rho_\text{d}$ 表示漫射颜色， $\boldsymbol\rho_\text{s}$ 表示高光强度， $\alpha$ 表示表面的粗糙程度，它们都与空间位置 $\boldsymbol{x}$ 有关。实际上，漫射颜色就是平日里我们一般所说的模型上的“贴图”。以此类比，高光度、粗糙度、自发光颜色等与位置有关的参数，也都可以用 uv 坐标下的贴图（灰度图）的形式来表达、存储。通过生成并使用各种物理参数贴图，并结合基于物理的光照模型，以渲染出具有真实感和物理一致性的材质表现，这一完整流程便被称为 **PBR 工作流**。
 
-目前流行的 PBR 工作流主要有两种：**金属—粗糙度**工作流和**镜面—光泽度**工作流。你能找到的 PBR 材质资源都属于这两种工作流之一，两者的区别仅在于对漫射/高光强度和粗糙程度参数作了不同的映射，感兴趣的话可以查阅这两篇文章以了解它们的具体[联系](https://docs.unity3d.com/Manual/StandardShaderMaterialCharts.html)和[区别](https://blog.csdn.net/s178435865/article/details/134975030)。
+其中，$\boldsymbol\rho_\text{d}$ 表示漫射颜色， $\boldsymbol\rho_\text{s}$ 表示高光强度， $\alpha$ 表示表面的粗糙程度，它们都与空间位置 $\boldsymbol{x}$ 有关。实际上，漫射颜色就是我们平时一般所说的模型上的“贴图”。以此类比，高光度、粗糙度、自发光颜色等与位置有关的参数，也都可以用 uv 坐标下的纹理贴图（灰度图）的形式来表达、存储。通过生成并使用各种物理参数纹理，并结合基于物理的光照模型，以渲染出具有真实感和物理一致性的材质表现，这一完整流程便被称为 **PBR 工作流**。
 
-除此之外，为了节省各种开销，通常会把 Blender、ZBrush 等建模软件中制作的高模转化为面数较少的低模，再导入 Unity 等实时渲染引擎中。为了弥补
+目前流行的 PBR 工作流主要有两种：**金属—粗糙度**（Metallic-Roughness）工作流和**镜面—光泽度**（Specular-Glossiness）工作流。你能找到的 PBR 材质资源都属于这两种工作流之一，两者的区别仅在于对漫射/高光强度和粗糙程度参数作了不同的映射，感兴趣的话可以查阅这两篇文章以了解它们的具体[联系](https://docs.unity3d.com/Manual/StandardShaderMaterialCharts.html)和[区别](https://blog.csdn.net/s178435865/article/details/134975030)。
 
-### 3、后处理
+除此之外，为了节省各种开销，通常会把 Blender、ZBrush 等建模软件中制作的高模转化为面数较少的低模，再导入 Unity 等实时渲染引擎中。为了弥补这一过程带来的模型精度损失，我们可以将这些损失掉的高度、法线、曲率等几何信息也制作成纹理，使其参与到渲染方程的计算中，获得更逼真的效果。（注意，这些纹理并不会用于对网格作任何修改，只会通过渲染的光照明暗表现出来，也可以认为是一种“幻术”）
+
+为了便于理解和配置，这里列出 PBR 工作流中常见的贴图名称及其含义，更详细的介绍可见这篇[文章存档](https://web.archive.org/web/20230812220537/https://help.quixel.com/hc/en-us/articles/115000612165-What-maps-are-included-and-how-do-I-use-them-)：
+
+<table><tbody>
+    <tr><td colspan="2"> <strong>金属度流程</strong> </td><td colspan="2"> <strong>镜面反射流程</strong> </td></tr>
+    <tr><td> <strong>Base Color (COL)</strong> </td><td> 漫射颜色 + 镜面反射F0 </td><td> <strong>Diffuse / Albedo</strong> </td><td> 漫射颜色 </td></tr>
+    <tr><td> <strong>Metallic</strong> </td><td> 金属度 </td><td> <strong>Specular (REFL)</strong> </td><td> 镜面度 </td></tr>
+    <tr><td> <strong>Roughness</strong> </td><td> 粗糙度 </td><td> <strong>Gloss / Smoothness</strong> </td><td> 光泽度（1 - 粗糙度） </td></tr>
+</tbody></table>
+
+| Emission | Bump / Height | Normal (NRM) | AO / Occlusion |
+| -------- | ------------- | ------------ | -------------- |
+| 自发光   | 高度          | 法线方向     | 环境光遮蔽信息 |
+
+以下贴图对应 URP 默认着色器未直接实现的功能：
+
+| Cavity | Curvature | Fuzz         | SSS        | Displacement (DISP)        |
+| ------ | --------- | ------------ | ---------- | -------------------------- |
+| 缝隙   | 曲率      | （织物）模糊 | 次表面散射 | 置换（**真正的**几何变换） |
+
+### 3. 后处理
 
 图形学一讲中已经介绍过后处理技术，它实际上是为了弥补光栅管线的不真实性而诞生的一种“补正措施”，由于它的实质是对二维图像的处理与合成，可以将其理解为某种“滤镜”；当然，在实际游戏开发中，除了追求真实性，一些特殊的视觉特效也可以利用后处理的手段实现。
 
@@ -311,7 +331,7 @@ Unity 中的后处理系统主要由以下模块配置：
   - 主要包括辉光（Bloom）、景深（Depth of View）、运动模糊（Motion Blur）及各种颜色调整等接近于纯粹图像处理的后处理效果
   - “体积”的含义：在不同空间范围内施加不同的后处理效果，默认使用 Global Volume（全局体积）
 
-- Settings 文件夹中 Renderer 配置文件的 Renderer Feature 配置项
+- Settings 文件夹内 Renderer 配置文件中的 Renderer Feature 配置项
   - 主要包括屏幕空间环境光遮蔽（SSAO）等较复杂的后处理效果，以及用于附加自定义的后处理效果、
 
 
@@ -325,7 +345,7 @@ Unity 中的后处理系统主要由以下模块配置：
 
 TODO：ShaderGraph Toon Shading
 
-### 4、HLSL
+### 4. HLSL
 
 #### 可能来不及准备/讲，先放个标题在这
 
@@ -335,7 +355,7 @@ TODO：ShaderGraph Toon Shading
 
 ## 六、写在最后
 
-作为一个最简单的入门教程，本篇基本只是让大家认识unity，下载安装unity并且了解unity的基本界面和用法。作为一个工具型软件，最好的学习方法永远是实战，推荐大家直接按照教程开发一个小项目，体会到游戏开发的乐趣。
+作为一个最简单的入门教程，本篇基本只是让大家认识unity，下载安装unity、了解unity的基本界面和用法。作为一个工具型软件，最好的学习方法永远是实战，推荐大家直接按照教程开发一个小项目，体会到游戏开发的乐趣。
 
 下面是一些实用的文档和教程，希望对大家有所帮助
 
