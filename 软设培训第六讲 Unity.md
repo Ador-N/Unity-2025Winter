@@ -277,24 +277,24 @@ Toon Shading 没法直接做，放后处理那边吧
 
 回顾 BRDF 表示的渲染方程：
 
-$$
+```math
 L(\boldsymbol{x},\boldsymbol{\omega}_o)
 =\mathcal{K}_\text{S} L + L_\text{r}^\text{e}(\boldsymbol{x})
 =L_\text{r}^\text{e}(\boldsymbol{x},\boldsymbol{\omega}_o)
 +\int_\Omega f_\text{r}(\boldsymbol{x}, -\boldsymbol{\omega}_i \rightarrow \boldsymbol{\omega}_o)
 \cdot L(\boldsymbol{x},\boldsymbol{\omega}_i)
 \cdot \cos\theta_i \, \mathrm{d} \boldsymbol{\omega}_i
-$$
+```
 
 如果已知发射部分（即 $L_\text{r}^\text{e}$）和 BRDF（即 $f_\text{r}$），我们便能写出片元着色器，让渲染管线帮我们计算以上表达式。现在的问题是，如何表示这两者，即：如何对物理表面建模？
 
 图形学一讲中介绍了 Lambert 漫射模型和 GGX 高光模型。现实生活中，一个表面显然并不会非黑即白地表现为“漫射”和“高光”中的一种，而往往是两种属性的混合，因此我们用这两个模型的加权求和来表示 BRDF，这便是实时渲染中常用的 Cook-Torrance BRDF：
 
-$$
+```math
 f_\text{r}(\boldsymbol{x}, -\boldsymbol{\omega}_i \rightarrow \boldsymbol{\omega}_o)
 = \frac{\boldsymbol\rho_\text{d}(\boldsymbol{x})}{\pi}
 + \frac{\boldsymbol\rho_\text{s}(\boldsymbol{x}) \cdot F\cdot D_{\alpha} \cdot G_{\alpha} }{4(\boldsymbol{n}\cdot\boldsymbol\omega_i)(\boldsymbol{n}\cdot\boldsymbol\omega_o)}
-$$
+```
 
 其中，$\boldsymbol\rho_\text{d}$ 表示漫射颜色， $\boldsymbol\rho_\text{s}$ 表示高光强度， $\alpha$ 表示表面的粗糙程度，它们都与空间位置 $\boldsymbol{x}$ 有关。实际上，漫射颜色就是我们平时一般所说的模型上的“贴图”。以此类比，高光度、粗糙度、自发光颜色等与位置有关的参数，也都可以用 uv 坐标下的纹理贴图（灰度图）的形式来表达、存储。通过生成并使用各种物理参数纹理，并结合基于物理的光照模型，以渲染出具有真实感和物理一致性的材质表现，这一完整流程便被称为 **PBR 工作流**。
 
