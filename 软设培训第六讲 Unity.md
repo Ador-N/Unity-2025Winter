@@ -82,11 +82,11 @@
 <big>**Material（材质）和 Shader（着色器）**</big>
 
 **Shader（着色器）** 是定义如何渲染物体的程序，主要包括顶点着色器和片段着色器。它负责计算物体的颜色、光照等效果；
-**Material（材质）** 是控制游戏对象外观的资源，包含颜色、纹理、透明度等基本属性，也可以包括高光度、粗糙度、法线等物理 / 几何信息。每个材质都与一个 Shader 关联，决定物体如何与光源互动和呈现视觉效果。
+**Material（材质）** 是控制游戏对象外观的资源，包含颜色、纹理、透明度等基本属性，也可以包括高光度、粗糙度、法线等物理 / 几何信息。每个材质都与一个 Shader 关联，决定物体如何与光源互动和呈现视觉效果，可以理解为是 Shader 的一个容器。由于通常在球模型上预览，也被称为 “**材质球**”。
 
 <big>**Mesh（网格）/ Model（模型）**</big>
 
-**Mesh** 是 3D 模型的几何数据，包含顶点、边和面，定义物体的形状。在 Unity 中，Mesh 通过 `MeshFilter` 和 `MeshRenderer` 组件显示和渲染。习惯上 **Model** 指 Mesh 加上材质、动画等其他数据构成的可渲染对象，不过区分这两者并不重要。
+**Mesh** 是 3D 模型的几何数据，包含顶点、边和面，定义物体的形状。在 Unity 中，Mesh 通过 `MeshFilter` 和 `MeshRenderer` 组件显示和渲染。习惯上 **Model** 指 Mesh 加上材质、动画等其他数据构成的可渲染对象，不过通常区分这两者并不重要。
 
 <big>**Sprite（精灵）**</big>
 
@@ -107,8 +107,7 @@
 
 待下载结束后，可以修改合适的项目名称和位置，然后点击“创建项目”。（不要勾选“启用游戏云服务”和“使用团结云开发”）
 （注1：“游戏云服务”是 Unity 中国提供的一系列*付费*服务；“团结云开发”是指 Unity 自己开发的版本管理系统 Plastic SCM，由于安装过程较为繁琐且只适用于 Unity，感兴趣的同学们可以自行了解。培训第一天我们讲解了 git，如果在此之前还没有使用 git 的经验，推荐借助软设开发的机会熟悉一下 git 的操作）
-（注2：下文演示中使用的 Unity 是 2022.3.56f1 版本）
-（注3：项目名和项目路径中最好不要有中文，可能会导致导出项目时因编码问题报错）
+（注2：项目名和项目路径中最好不要有中文，可能会导致导出项目时因编码问题报错）
 
 <img src="pics/image-20250120003354507.png" alt="image-20250120003354507" style="zoom:33%;" />
 
@@ -149,7 +148,7 @@
 
 - 如何切分帧图片和导入动画？
   
-  1. 选择需要切分的帧图片，在检查器中选择Sprite模式为“多个”，点击“应用”后单击“Sprite Editor”进入Sprite编辑器，在左上角的切片中按照cell大小完成切分。
+  1. 选择需要切分的帧图片，在检查器中选择 Sprite 模式为“多个”，点击“应用”后单击“Sprite Editor”进入 Sprite 编辑器，在左上角的切片中按照 cell 大小完成切分。
   
   ![image-20240130205653050](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130205653050.png)
   
@@ -165,7 +164,7 @@
 ## 四、交互逻辑：组件与脚本
 -   组件就是积木，需要用到的时候就添加。
 -   一个个组件共同构建起了**功能完整**的游戏对象。
-#### 1. 一般组件
+### 1. 一般组件
 一些常见的 Components 及其对应功能：
 
 | 分类      | 名称                                 | 功能                                                         |
@@ -180,7 +179,7 @@
 | 物理      | `xxxCollider`                        | 各种形状的碰撞器                                             |
 |           | `Rigidbody`                          | 刚体物理模拟                                                 |
 | 动画      | `Animation`                          | 在游戏对象上播放某个固定的动画片段（Animation Clip）         |
-|           | `Animator`                           | 动画状态机，详见后文介绍                                     |
+|           | `Animator`                           | 动画状态机                                                   |
 
 值得注意的是，Unity内置了强大的物理系统，可以给对象挂载组件使其符合一定物理规律。
 
@@ -194,7 +193,7 @@
 
 - 更改游戏对象物理材质（增加反弹、摩擦等）：新建物理材质，设置相关摩擦和弹力系数，替换掉Rigidbody 组件原物理材质。
 
-#### 2. 脚本
+### 2. 脚本
 1. 配置脚本编辑环境：在 Unity 中选择编辑 → 首选项 → 外部工具 → 外部脚本编辑器，选中 Visual Studio 或 Visual Studio Code 即可
 2. 创建一个简单的脚本（Project窗口右键 → 创建 → C#脚本）
 
@@ -223,11 +222,11 @@
 3. 在 `Start` 函数中写入以下代码，并将脚本挂载到 player 上
 
 	```csharp
-	Debug.Log("Hello world!");
+	Debug.Log("Hello, world!");
 	```
-运行游戏，控制台输出了一次Hello world信息
+   运行游戏，控制台输出了一次 Hello world 信息:
 
-![image-20240130210158347](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130210158347.png)
+   <img src="pics/image-20250123015752676.png" alt="image-20250123015752676" style="zoom: 50%;" />
 
 4. 碰撞事件和触发事件：
    游戏对象的碰撞体与其他碰撞体发生碰撞时会调用碰撞事件：
@@ -239,7 +238,7 @@
 		Debug.Log(name + " collided with " + collision.collider.name);
    }
    ```
-   在碰撞器组件上勾选了“是触发器”后，物体便不会与其他碰撞体发生碰撞，取而代之的是在相互穿过时调用触发事件：
+   在碰撞器组件上勾选了“Is Trigger（是触发器）”后，物体便不会与其他碰撞体发生碰撞，取而代之的是在相互穿过时调用触发事件：
    包括 OnTriggerEnter(2D) （接触开始时执行）、 OnTriggerExit(2D) （接触结束时执行）、 OnTriggerStay(2D) （接触过程中每个时间步长执行一次）
 
    ```csharp
@@ -249,7 +248,9 @@
    }
    ```
 
-#### 3. MonoBehaviour 生命周期
+#### MonoBehaviour 生命周期
+
+除了前面提到的 `Start()` , `Update()` , `OnCollisionEnter()` 等函数外，
 
 <img src="pics/Unity MonoBehaviour Main Lifecycle.svg" alt="image-20250121120405403"/>
 
@@ -278,7 +279,7 @@ TODO
 
 将 **模型空间（Model / Object / Local Space）** 的顶点坐标通过一系列矩阵变换，转换到 **屏幕空间（View / Screen Space）**。
 
-此处的一系列矩阵变换，被称为 **MVP**（Model View Projection）变换。当然，这些变换矩阵都会由管线的其他部分提供，因此我们无需关注具体的数学细节，此处仅列出变换的大致流程：
+此处的一系列矩阵变换，被称为 **MVP**（Model View Projection）变换。当然，这些变换矩阵都会由管线的其他部分提供，因此我们无需关注具体的数学细节，此处仅列出变换的大致流程，更清晰的演示和数学细节可见[这篇文章](https://jsantell.com/model-view-projection/)及其 Reference 部分：
 
 |                   模型空间（Object Space）                   |                   世界空间（World Space）                    |                   相机空间（Camera Space）                   |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -293,9 +294,9 @@ TODO
 以上转换涉及一些较复杂的透视变换，最后还会由归一化的设备坐标变换到实际的屏幕空间坐标。
 
 > 注 1：除了 NDC 和屏幕空间坐标外，这里所有的变换矩阵和向量实际上都是四维的。为什么？[Wikipedia:齐次坐标](https://zh.wikipedia.org/wiki/齐次坐标)
-> 注 2：从裁切空间到NDC、屏幕空间的变换由渲染管线和驱动程序自动完成，因此实际 Shader 中只需变换到裁切空间即可。
+> 注 2：从裁切空间到NDC、屏幕空间的变换由 GPU 和驱动程序等自动完成，因此实际 Shader 中只需变换到裁切空间即可。
 
-理论上来说，所有与模型的几何信息相关，并且 **不改变顶点数量** 的功能，都可以由顶点着色器实现，例如，可以根据时间等输入来动态地改变顶点位置，以实现波动、变形等效果。除此之外，在实际的工程应用中，顶点着色器也可以用于将更多的几何数据传递给片元着色器，以备处理。后文将用 ShaderGraph 可视化编程的形式编写顶点着色器，实现模型描边功能。
+理论上来说，所有与模型的几何信息相关，并且 **不改变顶点数量** 的功能，都可以由顶点着色器实现，例如，可以根据时间等输入来动态地改变顶点位置，以实现波动、变形等效果。除此之外，在实际的工程应用中，顶点着色器也可以用于将更多的几何数据传递给片元着色器，以备处理。下一节中，我们将用 ShaderGraph 可视化编程的形式编写顶点着色器，实现模型描边功能。
 
 #### 中间步骤
 
@@ -305,7 +306,7 @@ TODO
 
 #### 片元着色器
 
-给 **片元（Fragment）**（即未上色的**像素**）上色，通常利用 BRDF 对光照信息的计算通常就发生在此步骤：
+给 **片元（Fragment）**（即未上色的**像素**）上色，利用 BRDF 对光照信息的计算通常就发生在此步骤：
 $$
 L(\boldsymbol{x},\boldsymbol{\omega}_o)
 =\mathcal{K}_\text{S} L + L_\text{r}^\text{e}(\boldsymbol{x})
@@ -318,15 +319,48 @@ $$
 
 ### 1. ShaderGraph
 
-#### 此处参考往年 Unity，但是要大改
+**Shader Graph（着色器图）** 是 Unity 中的一种基于节点的可视化着色器编辑器，主要支持 URP 和 HDRP。它允许开发者通过连接不同节点模块，在不编写传统着色器代码的情况下创建和编辑着色器。
 
-目前计划：顶点着色器描边
+节点化的着色器由于易上手、对美术工作人员友好而被广泛应用，在 Blender 和 UE4/5 中也有类似的基于节点的着色器编辑工具；但相应地，节点化的工作方式无法达到和代码一样的灵活性，并且在着色器较复杂时，节点图可能会变得异常庞大和难以阅读。
 
-Toon Shading 没法直接做，放后处理或者HLSL那边吧
+接下来，我们利用 ShaderGraph，以顶点法向偏移的方法实现 *非真实感渲染* 中的**描边**效果。
+
+- 核心想法：将模型复制一遍，并在渲染时将所有顶点沿法线方向向外偏移一段固定距离，同时借助其他手段（只渲染背面、深度测试等）使复制出来的模型只渲染在原模型的后方，这样总体便会呈现出描边的视觉效果。
+
+在 Project 窗口，右键 → Create（创建）→ Shader Graph → URP → Unlit Shader Graph（无光照着色器），命名为 Vertex Offset Outline
+
+<img src="pics/image-20250122215532665.png" alt="image-20250122215532665" style="zoom: 33%;" />
+
+双击打开着色器，进入着色器编辑界面
+
+<img src="pics/image-20250123000848010.png" alt="image-20250123000848010" style="zoom:33%;" />
+
+ShaderGraph是以节点和连线组成的，创建后默认存在两个主节点，即 Unlit Shader Graph 默认实现的顶点着色器和一个无光照的片元着色器，可以通过将其他节点到这两个主着色器节点来实现想要的效果。
+
+左上角为黑板（Blackboard）区域，可以创建和使用输入变量；右上角为检查器（Graph Inspector），显示所选节点或整个 ShaderGraph 除输入、输出外的其他参数；右下角的 Main Preview 为着色器默认参数在球面上的效果预览。
+
+点击 Blackboard 窗口的 + 图标，可以选择创建输入变量的类型，本例中需要一个 Float 输入和一个 Color 输入，分别代表描边的宽度和颜色，创建好的输入变量可以直接拖动到编辑区域成为节点，也可以在 Inspector 窗口编辑其默认值等信息。
+
+右击空白区域，选择 Create Node，即出现节点创建窗口，其中下半部分按照分类列出了各种节点，上方搜索框可以通过节点名称等信息在列表中直接搜索节点。创建节点后，即可拖动鼠标，将不同节点的输入输出端口连接起来。
+
+<div style = "text-align: center"><img src="pics/image-20250123002310077.png" alt="image-20250123002310077" style="zoom:50%;" /><img src="pics/image-20250123003453025.png" alt="image-20250123003453025" style="zoom:33%;" /></div>
+
+节点的连接可以理解为一系列的函数调用，例如上图中的节点连接关系即可用（伪）代码表示为：
+
+```c
+float3 Multiply (float3 a, float b) { return a * b; }
+Output = Multiply(NormalVector(Space.World), Width);
+```
+
+按照以上方法，如下图所示创建并连接节点，保存后，将对应的材质作为第二个材质放入 MeshRenderer，便可实现所需效果。
+
+<img src="pics/image-20250123002807784.png" alt="image-20250123002807784" style="zoom:33%;" />
+
+<img src="pics/image-20250123005828219.png" alt="image-20250123005828219" style="zoom: 50%;" />
 
 ### 2. PBR（Physics-Based Rendering）工作流
 
-在 2D 作品中，我们基本只需要一系列精灵图和一些简 单的特效处理，就可以实现大部分的视觉效果。但是在 3D 游戏，尤其是追求物理真实感的 3D 作品中，是否仍然这么简单？
+在 2D 作品中，我们基本只需要一系列精灵图和一些简单的特效处理，就可以实现大部分的视觉效果。但是在 3D 游戏，尤其是追求物理真实感的 3D 作品中，是否仍然这么简单？
 
 回顾 BRDF 表示的渲染方程：
 
@@ -350,24 +384,25 @@ $$
 
 其中， $\boldsymbol\rho_\text{d}$ 表示漫射颜色， $\boldsymbol\rho_\text{s}$ 表示高光强度， $\alpha$ 表示表面的粗糙程度，它们都与空间位置 $\boldsymbol{x}$ 有关。实际上，漫射颜色就是我们平时一般所说的模型上的“贴图”。以此类比，高光度、粗糙度、自发光颜色等与位置有关的参数，也都可以用 uv 坐标下的纹理贴图（灰度图）的形式来表达、存储。通过生成并使用各种物理参数纹理，并结合基于物理的光照模型，以渲染出具有真实感和物理一致性的材质表现，这一完整流程便被称为 **PBR 工作流**。
 
-目前流行的 PBR 工作流主要有两种：**金属—粗糙度**（Metallic-Roughness）工作流和**镜面—光泽度**（Specular-Glossiness）工作流。你能找到的 PBR 材质资源都属于这两种工作流之一，两者的区别仅在于对漫射/高光强度和粗糙程度参数作了不同的映射，感兴趣的话可以查阅这两篇文章以了解它们的具体[联系](https://docs.unity3d.com/Manual/StandardShaderMaterialCharts.html)和[区别](https://blog.csdn.net/s178435865/article/details/134975030)。
+目前流行的 PBR 工作流主要有两种：**金属—粗糙度**（Metallic-Roughness）工作流和**镜面—光泽度**（Specular-Glossiness）工作流。你能找到的 PBR 材质资源都属于这两种工作流之一，两者的区别仅在于对漫射/高光强度和粗糙程度参数作了不同的映射，感兴趣的话可以查阅这两篇文档以了解它们的具体[区别](https://docs.unity3d.com/Manual/StandardShaderMaterialCharts.html)和[联系](https://www.adobe.com/learn/substance-3d-designer/web/the-pbr-guide-part-2)。
 
-除此之外，为了节省各种开销，通常会把 Blender、ZBrush 等建模软件中制作的高模转化为面数较少的低模，再导入 Unity 等实时渲染引擎中。为了弥补这一过程带来的模型精度损失，我们可以将这些损失掉的高度、法线、曲率等几何信息也制作成纹理，使其参与到渲染方程的计算中，获得更逼真的效果。（注意，这些纹理并不会用于对网格的几何信息作任何修改，只会通过渲染的光照明暗表现出来，也可以认为是一种“幻术”）
+除此之外，为了节省各种开销，通常会把 Blender、ZBrush 等建模软件中制作的高模转化为面数较少的低模，再导入 Unity 等实时渲染引擎中。为了弥补这一过程带来的模型精度损失，我们可以将这些损失掉的高度、法线、曲率等几何信息也制作成纹理，使其参与到渲染方程的计算中，获得更逼真的效果。（注意，除了置换纹理 (Displacement) 外，这些纹理并不会用于对网格的几何信息作任何修改，只会通过渲染的光照明暗表现出来，也可以认为是一种“幻术”）
 
-为了便于理解和配置，这里列出 PBR 工作流中常见的贴图名称及其含义，更详细的介绍可见这篇[文章存档](https://web.archive.org/web/20230812220537/https://help.quixel.com/hc/en-us/articles/115000612165-What-maps-are-included-and-how-do-I-use-them-)：
+为了便于理解和配置，这里列出 PBR 工作流中常见的贴图名称及其含义，更详细的介绍可见来自 Quixel 的这篇[文章存档](https://web.archive.org/web/20230812220537/https://help.quixel.com/hc/en-us/articles/115000612165-What-maps-are-included-and-how-do-I-use-them-)：
 
 <table><tbody>
-    <tr><td colspan="2"> <strong>金属度流程</strong> </td><td colspan="2"> <strong>镜面反射流程</strong> </td></tr>
-    <tr><td> <strong>Base Color (COL)</strong> </td><td> 漫射颜色 + 镜面反射F0 </td><td> <strong>Diffuse / Albedo</strong> </td><td> 漫射颜色 </td></tr>
+    <tr><td colspan="2"> <strong>金属度流程</strong> </td><td colspan="2"> <strong>镜面度流程</strong> </td></tr>
+    <tr><td> <strong>Base Color (COL) / Albedo</strong> </td><td> 漫射颜色 + 镜面反射F0 </td><td> <strong>Diffuse / Albedo</strong> </td><td> 漫射颜色 </td></tr>
     <tr><td> <strong>Metallic</strong> </td><td> 金属度 </td><td> <strong>Specular (REFL)</strong> </td><td> 镜面度 </td></tr>
     <tr><td> <strong>Roughness</strong> </td><td> 粗糙度 </td><td> <strong>Gloss / Smoothness</strong> </td><td> 光泽度（1 - 粗糙度） </td></tr>
 </tbody></table>
+
 
 | Emission | Bump / Height | Normal (NRM) | AO / Occlusion |
 | -------- | ------------- | ------------ | -------------- |
 | 自发光   | 高度          | 法线方向     | 环境光遮蔽信息 |
 
-以下贴图对应 URP 默认着色器未直接实现的功能：
+以下贴图对应 URP 默认光照着色器未直接实现的功能：
 
 | Cavity | Curvature | Fuzz         | SSS        | Displacement (DISP)        |
 | ------ | --------- | ------------ | ---------- | -------------------------- |
@@ -381,10 +416,12 @@ $$
 
 Unity 中的后处理系统主要由以下模块配置：
 
-- Post-process Volume（后处理体积，SRP 中简称为 Volume / 体积）及其对应配置文件
+- Post-process Volume（后处理体积，SRP 中简称为 Volume）及其对应配置文件
   - 主要包括辉光（Bloom）、景深（Depth of View）、运动模糊（Motion Blur）及各种颜色调整等接近于纯粹图像处理的后处理效果
   - “体积”的含义：在不同空间范围内施加不同的后处理效果，默认使用 Global Volume（全局体积）
 
+    （如果使用了官方汉化包，你会发现此处的 Volume 被 Unity 机翻成了音量。）
+  
 - Settings 文件夹内 Renderer 配置文件中的 Renderer Feature 配置项
   - 主要包括屏幕空间环境光遮蔽（SSAO）等较复杂的后处理效果，以及用于附加自定义的后处理效果、
 
@@ -399,13 +436,9 @@ Unity 中的后处理系统主要由以下模块配置：
 
 TODO：ShaderGraph Toon Shading？
 
-### 4. HLSL
+### 4. 自学部分：HLSL
 
-#### 可能来不及准备/讲，先放个标题在这
-
-不过 ShaderGraph 这个内嵌 HLSL 用起来感觉还凑合，可以简单提两句。
-
-不是 ShaderGraph 怎么不支持多 pass，那还是提一下吧，但是 URP 疑似本来就不支持多 pass
+可能来不及准备，而且准备了可能也来不及讲，所以干脆讲完再写。先放个标题在这。
 
 ## 六、写在最后
 
@@ -413,10 +446,10 @@ TODO：ShaderGraph Toon Shading？
 
 下面是一些实用的文档和教程，希望对大家有所帮助
 
-- [Unity官方文档及API说明](https://docs.unity3d.com/cn/current/Manual/UnityManual.html)
-- [完整游戏制作合集教程](https://space.bilibili.com/390481111/channel/collectiondetail?sid=1064344)
-- [Unity特效渲染合集教程](https://space.bilibili.com/390481111/channel/collectiondetail?sid=1181615)
-- [【Unity】有趣的游戏技巧（轮子）教程合集](https://space.bilibili.com/390481111/channel/collectiondetail?sid=1097746)
+- [Unity官方文档](https://docs.unity3d.com/cn/current/Manual/UnityManual.html) 及 [API 说明](https://docs.unity3d.com/cn/current/ScriptReference/index.html)
+- [完整游戏制作合集教程](https://space.bilibili.com/390481111/lists/1064344)
+- [Unity特效渲染合集教程](https://space.bilibili.com/390481111/lists/1181615)
+- [【Unity】有趣的游戏技巧（轮子）教程合集](https://space.bilibili.com/390481111/lists/1097746)
 
 素材网站：
 
