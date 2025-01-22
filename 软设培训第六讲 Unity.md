@@ -261,16 +261,16 @@ TODO
 
 #### 概念
 
-<img src="pics\SRP Minimal.svg" alt="SRP Minimal" style="zoom:60%;" />
+<img src="pics/SRP Minimal.svg" alt="SRP Minimal" style="zoom:60%;" />
 
-<img src="pics\SRP Detailed.svg" alt="SRP Detailed" />
+<img src="pics/SRP Detailed.svg" alt="SRP Detailed" />
 
 （以上两张图片分别出自 2024 暑培 / 寒培《实时渲染基础魔法》）
 
-* 本教程不再强调“可编程”，因为事实上所谓的“固定渲染管线”早在 2000 年代就基本消失了。
+* 本文不再强调“可编程”，因为事实上所谓的“固定渲染管线”早在 2000 年代就基本消失了。
   * 2008 年 OpenGL 3.0 将固定渲染管线标记为过时（deprecated），2009 年 OpenGL 3.2 完全移除固定渲染管线。
 
-<img src="pics\Unity 渲染管线.png" alt="Unity 渲染管线" style="zoom:40%;" />
+<img src="pics/Unity 渲染管线.png" alt="Unity 渲染管线" style="zoom:40%;" />
 
 * Unity 的 Scriptable Rendering Pipeline（SRP）中的 "Scriptable" 实际上也并不是指顶点着色器和片元着色器的"可编程"，因为此前的内置（Built-In）渲染管线显然也可以对着色器进行编程，它并不是所谓的“固定渲染管线”。此处的”可编程“指的是在着色器之外，对整个渲染流程进行控制，当然这些就并不在本次教程的范围内了。
 
@@ -282,13 +282,13 @@ TODO
 
 |                   模型空间（Object Space）                   |                   世界空间（World Space）                    |                   相机空间（Camera Space）                   |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="pics\image-20250122181433789.png" alt="image-20250122181433789" style="zoom: 25%;" /> | <img src="pics\image-20250122181441125.png" alt="image-20250122181441125" style="zoom: 25%;" /> | <img src="pics\image-20250122181447153.png" alt="image-20250122181447153" style="zoom: 25%;" /> |
+| <img src="pics/image-20250122181433789.png" alt="image-20250122181433789" style="zoom: 25%;" /> | <img src="pics/image-20250122181441125.png" alt="image-20250122181441125" style="zoom: 25%;" /> | <img src="pics/image-20250122181447153.png" alt="image-20250122181447153" style="zoom: 25%;" /> |
 
 以上三个空间坐标间的转换较简单，仅涉及刚体变换（旋转、平移）
 
 | 相机空间（Camera Space） →   裁切空间（Clip Space） →   归一化设备坐标（NDC） |
 | :----------------------------------------------------------: |
-| ![img](pics\Screenshot_2022-04-27_094119_efatap.png) |
+| ![img](pics/Screenshot_2022-04-27_094119_efatap.png) |
 
 以上转换涉及一些较复杂的透视变换，最后还会由归一化的设备坐标变换到实际的屏幕空间坐标。
 
