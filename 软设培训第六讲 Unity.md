@@ -127,7 +127,7 @@
 ### 2. 游戏对象
 #### 1. Main Camera
 - 项目初始化后，初始场景 Sample Scene 会自带游戏对象 Main Camera，用于将其范围内的游戏场景在游戏界面中显示出来。
-- Main Camera 挂载的 Camera 组件可以设置摄像机的诸多属性（如画面大小），Transform组件可以使摄像机在游戏进程中随时改变位置，获得灵活的运镜效果（这在3D游戏中尤为重要）
+- Main Camera 挂载的 Camera 组件可以设置摄像机的诸多属性（如画面大小），Transform 组件可以使摄像机在游戏进程中随时改变位置，获得灵活的运镜效果（这在3D游戏中尤为重要）
 #### 2. 静态对象的创建
 - Unity 提供了一系列简单的几何对象
 
@@ -145,15 +145,14 @@
 ![image-20240130205638172](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130205638172.png)
 
 3. 拖拽素材进入场景，可以看到“层级”视图中新增了游戏对象
-
-- 如何切分帧图片和导入动画？
-  
+- 对于 3D 模型素材（.fbx 等），通常动画已经包含在模型文件中，无需手动配置；
+- 对于 2D Sprite 素材，需要手动切分帧图片和导入动画：
   1. 选择需要切分的帧图片，在检查器中选择 Sprite 模式为“多个”，点击“应用”后单击“Sprite Editor”进入 Sprite 编辑器，在左上角的切片中按照 cell 大小完成切分。
   
   ![image-20240130205653050](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130205653050.png)
   
   2. 按照顺序选择合成动画的帧，拖拽至对应游戏对象上，Unity即可自动生成动画文件。
-  3. 选择对应游戏对象后，在“动画”选项卡（注意不是“动画器”)即可播放对应动画。
+  3. 选择对应游戏对象后，在“动画”选项卡（注意不是“动画器”）即可播放对应动画。
   
 -   关于动画，更全面、系统、深层次的应用：动画状态机（Animator）
     -   状态，即动画的效果，比如人物静止的时候会有上下轻微浮动的动画，人物走的时候有个行走的动画，人物攻击的时候有个攻击的动画，跳跃的时候有个跳跃的动画，这些不同的动画状态，都是通过**状态机**连接起来的。
@@ -187,7 +186,7 @@
 
   ![image-20240130210029878](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130210029878.png)
 
-- 使游戏对象之间发生碰撞：两个对象均挂载了碰撞体（Collider / Collider 2D）组件，运动一方的 Rigidbody 组件碰撞检测设置为“持续”
+- 使游戏对象之间发生碰撞：两个对象均挂载了碰撞体（Collider / Collider 2D）组件，运动一方的 Rigidbody 组件碰撞检测设置为 “Continuous（持续）”
 
   ![image-20240130205955717](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130205955717.png)
 
@@ -230,7 +229,7 @@
 
 4. 碰撞事件和触发事件：
    游戏对象的碰撞体与其他碰撞体发生碰撞时会调用碰撞事件：
-   包括 OnCollisionEnter(2D) （碰撞开始时执行）、 OnCollisionExit(2D) （碰撞结 束时执行）、 OnCollisionStay(2D) （碰撞过程中每个时间步长执行一次)
+   包括 OnCollisionEnter(2D) （碰撞开始时执行）、 OnCollisionExit(2D) （碰撞结 束时执行）、 OnCollisionStay(2D) （碰撞过程中每个时间步长执行一次）
 
    ```csharp
    private void OnCollisionEnter(Collision collision) // Collision 类，存储碰撞对象、位置等信息
@@ -248,7 +247,7 @@
    }
    ```
 
-#### MonoBehaviour 生命周期
+#### MonoBehaviour 事件生命周期
 
 除了前面提到的 `Start()` , `Update()` , `OnCollisionEnter()` 等函数外，
 
@@ -266,7 +265,7 @@ TODO
 
 <img src="pics/SRP Detailed.svg" alt="SRP Detailed" />
 
-（以上两张图片分别出自 2024 暑培 / 寒培《实时渲染基础魔法》）
+（以上两张图分别出自 2024 暑培 / 寒培《实时渲染基础魔法》）
 
 * 本文不再强调“可编程”，因为事实上所谓的“固定渲染管线”早在 2000 年代就基本消失了。
   * 2008 年 OpenGL 3.0 将固定渲染管线标记为过时（deprecated），2009 年 OpenGL 3.2 完全移除固定渲染管线。
@@ -277,36 +276,36 @@ TODO
 
 #### 顶点着色器
 
-将 **模型空间（Model / Object / Local Space）** 的顶点坐标通过一系列矩阵变换，转换到 **屏幕空间（View / Screen Space）**。
+将 **模型空间（Model / Object / Local Space）** 的顶点坐标通过一系列矩阵变换，转换到 **屏幕空间（Screen Space）**。
 
-此处的一系列矩阵变换，被称为 **MVP**（Model View Projection）变换。当然，这些变换矩阵都会由管线的其他部分提供，因此我们无需关注具体的数学细节，此处仅列出变换的大致流程，更清晰的演示和数学细节可见[这篇文章](https://jsantell.com/model-view-projection/)及其 Reference 部分：
+此处的一系列矩阵变换，被称为 **MVP**（Model-View-Projection）变换。当然，这些变换矩阵都会由管线的其他部分提供，因此我们无需关注具体的数学细节，此处仅列出变换的大致流程，更清晰的演示及数学细节可见[这篇文章](https://jsantell.com/model-view-projection/)及其 Reference 部分：
 
-|                   模型空间（Object Space）                   |                   世界空间（World Space）                    |                   相机空间（Camera Space）                   |
+|                   模型空间（Object Space）                   |                   世界空间（World Space）                    |               相机空间（Camera / View Space）                |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="pics/image-20250122181433789.png" alt="image-20250122181433789" style="zoom: 25%;" /> | <img src="pics/image-20250122181441125.png" alt="image-20250122181441125" style="zoom: 25%;" /> | <img src="pics/image-20250122181447153.png" alt="image-20250122181447153" style="zoom: 25%;" /> |
 
 以上三个空间坐标间的转换较简单，仅涉及刚体变换（旋转、平移）
 
-| 相机空间（Camera Space） →   裁切空间（Clip Space） →   归一化设备坐标（NDC） |
+| 相机空间（Camera / View Space） →   裁剪空间（Clip Space） →   归一化设备坐标（NDC） |
 | :----------------------------------------------------------: |
-| ![img](pics/Screenshot_2022-04-27_094119_efatap.png) |
+|     ![img](pics/Screenshot_2022-04-27_094119_efatap.png)     |
 
-以上转换涉及一些较复杂的透视变换，最后还会由归一化的设备坐标变换到实际的屏幕空间坐标。
+以上转换涉及一些较复杂的透视变换（对于正交投影，则只是简单的拉伸变换），最后还会由归一化的设备坐标变换到实际的屏幕空间坐标。
 
-> 注 1：除了 NDC 和屏幕空间坐标外，这里所有的变换矩阵和向量实际上都是四维的。为什么？[Wikipedia:齐次坐标](https://zh.wikipedia.org/wiki/齐次坐标)
-> 注 2：从裁切空间到NDC、屏幕空间的变换由 GPU 和驱动程序等自动完成，因此实际 Shader 中只需变换到裁切空间即可。
+> 注 1：除 NDC 和屏幕空间坐标外，这里所有的变换矩阵和向量实际上都是四维的。为什么？[Wikipedia:齐次坐标](https://zh.wikipedia.org/wiki/齐次坐标)<br/>
+> 注 2：从裁剪空间到NDC、屏幕空间的变换由 GPU 和驱动程序等自动完成，因此实际 Shader 中只需变换到裁切空间即可。
 
 理论上来说，所有与模型的几何信息相关，并且 **不改变顶点数量** 的功能，都可以由顶点着色器实现，例如，可以根据时间等输入来动态地改变顶点位置，以实现波动、变形等效果。除此之外，在实际的工程应用中，顶点着色器也可以用于将更多的几何数据传递给片元着色器，以备处理。下一节中，我们将用 ShaderGraph 可视化编程的形式编写顶点着色器，实现模型描边功能。
 
 #### 中间步骤
 
-这一步包括三角形建形、光栅化等步骤，这些计算由引擎或驱动程序等完成。
+这一步包括三角形建形、光栅化、对几何信息（uv、法线等）插值等步骤，这些计算由引擎或驱动程序等完成。
 
 但在此之前，还可以插入两个步骤：*曲面细分着色器* 和 *几何着色器*。这两个着色器的引入，主要是为了解决顶点着色器<u>无法改变顶点数量</u>的限制，从而对视觉效果实现更灵活的调控，具体细节可以自行了解。
 
 #### 片元着色器
 
-给 **片元（Fragment）**（即未上色的**像素**）上色，利用 BRDF 对光照信息的计算通常就发生在此步骤：
+给 **片元（Fragment）**（即未上色的**像素**）上色，这一上色操作通常需要利用顶点着色器传入的几何信息（uv）对一些贴图进行采样。利用 BRDF 对光照信息的计算通常就发生在此步骤：
 $$
 L(\boldsymbol{x},\boldsymbol{\omega}_o)
 =\mathcal{K}_\text{S} L + L_\text{r}^\text{e}(\boldsymbol{x})
@@ -335,9 +334,9 @@ $$
 
 <img src="pics/image-20250123000848010.png" alt="image-20250123000848010" style="zoom:33%;" />
 
-ShaderGraph是以节点和连线组成的，创建后默认存在两个主节点，即 Unlit Shader Graph 默认实现的顶点着色器和一个无光照的片元着色器，可以通过将其他节点到这两个主着色器节点来实现想要的效果。
+ShaderGraph 是以节点和连线组成的，创建后默认存在两个主节点，即 Unlit Shader Graph 默认实现的顶点着色器和一个无光照的片元着色器，可以通过将其他节点到这两个主着色器节点来实现想要的效果。
 
-左上角为黑板（Blackboard）区域，可以创建和使用输入变量；右上角为检查器（Graph Inspector），显示所选节点或整个 ShaderGraph 除输入、输出外的其他参数；右下角的 Main Preview 为着色器默认参数在球面上的效果预览。
+左上角为黑板（Blackboard）区域，可以创建和使用输入变量；右上角为检查器（Graph Inspector），显示所选节点或整个 ShaderGraph 除输入、输出外的其他参数；右下角的 Main Preview 为着色器默认参数在球面上的效果预览。可以通过右上角的三个 Toggle 开关来控制其显示与否。
 
 点击 Blackboard 窗口的 + 图标，可以选择创建输入变量的类型，本例中需要一个 Float 输入和一个 Color 输入，分别代表描边的宽度和颜色，创建好的输入变量可以直接拖动到编辑区域成为节点，也可以在 Inspector 窗口编辑其默认值等信息。
 
@@ -345,11 +344,13 @@ ShaderGraph是以节点和连线组成的，创建后默认存在两个主节点
 
 <div style = "text-align: center"><img src="pics/image-20250123002310077.png" alt="image-20250123002310077" style="zoom:50%;" /><img src="pics/image-20250123003453025.png" alt="image-20250123003453025" style="zoom:33%;" /></div>
 
-节点的连接可以理解为一系列的函数调用，例如上图中的节点连接关系即可用（伪）代码表示为：
+节点的连接可以理解为一系列的函数调用，例如上图中的节点连接关系即可用 **伪** 代码表示为：
 
 ```c
 float3 Multiply (float3 a, float b) { return a * b; }
-Output = Multiply(NormalVector(Space.World), Width);
+float3 main() {
+	return Multiply(NormalVector(Space.World), Width);
+}
 ```
 
 按照以上方法，如下图所示创建并连接节点，保存后，将对应的材质作为第二个材质放入 MeshRenderer，便可实现所需效果。
@@ -396,8 +397,6 @@ $$
     <tr><td> <strong>Metallic</strong> </td><td> 金属度 </td><td> <strong>Specular (REFL)</strong> </td><td> 镜面度 </td></tr>
     <tr><td> <strong>Roughness</strong> </td><td> 粗糙度 </td><td> <strong>Gloss / Smoothness</strong> </td><td> 光泽度（1 - 粗糙度） </td></tr>
 </tbody></table>
-
-
 | Emission | Bump / Height | Normal (NRM) | AO / Occlusion |
 | -------- | ------------- | ------------ | -------------- |
 | 自发光   | 高度          | 法线方向     | 环境光遮蔽信息 |
@@ -436,13 +435,13 @@ Unity 中的后处理系统主要由以下模块配置：
 
 TODO：ShaderGraph Toon Shading？
 
-### 4. 自学部分：HLSL
+### 4. 自学部分：ShaderLab & HLSL
 
 可能来不及准备，而且准备了可能也来不及讲，所以干脆讲完再写。先放个标题在这。
 
 ## 六、写在最后
 
-作为一个最简单的入门教程，本篇基本只是让大家认识unity，下载安装unity、了解unity的基本界面和用法。作为一个工具型软件，最好的学习方法永远是实战，推荐大家直接按照教程开发一个小项目，体会到游戏开发的乐趣。
+作为一个最简单的入门教程，本篇基本只是让大家认识 Unity，下载安装 Unity、了解 Unity的基本界面和用法。作为一个工具型软件，最好的学习方法永远是实战，推荐大家直接按照教程开发一个小项目，体会到游戏开发的乐趣。
 
 下面是一些实用的文档和教程，希望对大家有所帮助
 
