@@ -6,9 +6,9 @@
 
 [TOC]
 
-<s>可能考虑做成 ppt 或者迁移到 typst，markdown 限制太大了</s>
 
-暑假再说吧。
+
+
 
 ## 一、Unity 介绍
 
@@ -22,7 +22,7 @@
 - Unity 使用 C# 作为主要的脚本编程语言，开发者可以通过编写脚本来控制游戏对象的行为逻辑；Unity 还提供了许多内置的功能和工具，如碰撞检测、音频管理、粒子效果等，使开发者能够更加方便地实现各种功能。
 - Unity 支持跨平台发布，开发者可以通过一次开发，将同一个游戏高效地发布到 Windows、macOS、iOS、Android、WebGL 等多个平台，触达更多的玩家。
 ### 3. 为什么选择 Unity？
-- 成熟，应用广泛
+- 成熟，应用广泛，（与 UE 相比）更轻量级
 - 简单易学，上手快
 - 学习路径完善，学习资源丰富，教程、文档、社区论坛等资源全面充足
 ## 二、环境配置与安装
@@ -34,7 +34,7 @@
 - Unity Editor：2022.3.56f1 / 2022.3.52f1c1 (*) (**)
 - 代码编辑器：Visual Studio / Visual Studio Code / JetBrains Rider
 
-> (&#42;) 注1：如果不使用*额外的网络工具*，大陆地区下载到的 Unity Hub / Unity Editor 通常为版本号带 c 后缀的国内特供版，而不带 c 后缀的则为国际版。通常情况下两者在使用上没有明显差别，但需要注意，最新的国内版 Unity Hub 在较为明显的位置放置了“团结引擎”的下载按钮（如下图），无视即可。
+> (&#42;) 注1：如果不使用*额外的网络工具*，大陆地区下载到的 Unity Hub / Unity Editor 通常为版本号带 c 后缀的国内特供版，而不带 c 后缀的则为国际版。通常情况下两者在使用上没有明显差别，但需要注意，较新的国内版 Unity Hub 在较为明显的位置放置了“团结引擎”的下载按钮（如下图），无视即可。
 >
 > <img src="pics/image-20250119211304746.png" alt="image-20250119211304746" style="zoom:25%;" />
 >
@@ -45,11 +45,11 @@
 
 2. Unity Editor 安装：在 Unity Hub 界面的左侧栏选择“安装”，点击右上角“安装编辑器”按钮，在“正式发行”（LTS）一栏找到需要下载的 Unity Editor（此处选择版本 2022.3.52f1c1）进行安装：
 
-   <img src="pics/image-20250119215904554.png" alt="image-20250119215904554" style="zoom:33%;" />
+   <img src="pics/image-20250119215904554.png" alt="image-20250119215904554" style="zoom:25%;" />
 
-   Visual Studio 、开发平台和文档等项可视需求勾选。新版本 Unity 安装时可以直接选择简体中文配置，不需要额外汉化包。
+   Visual Studio 、开发平台和文档等项可视需求勾选。新版本 Unity 安装时可以直接选择简体中文配置，不需要额外汉化包（但其翻译质量较微妙）。
 
-   <img src="pics/image-20250119215948789.png" alt="image-20250119215948789" style="zoom:33%;" />
+   <img src="pics/image-20250119215948789.png" alt="image-20250119215948789" style="zoom:25%;" />
 
    需要注意的是，Unity 各大版本之间兼容性较差。一般而言同一大版本的 LTS 版本之间差距不大，但切换大版本时通常会出现一些兼容性问题，因此一旦选定了一个大版本进行团队开发，就要统一 Unity 版本并一直使用到项目结束。
 
@@ -101,21 +101,21 @@
 #### Unity Hub
 在Unity Hub界面，点击“新项目”，进入创建项目界面。本次培训中，我们主要以 3D 项目为例，介绍 Unity 的基本操作；同时，为了节约环境配置时间，我们直接以 URP（通用渲染管线）模板创建项目：（关于渲染管线，在昨天的图形学一讲中已经初步提及，更进一步的解释详见后文介绍）
 
-<img src="pics/image-20250120001819635.png" alt="image-20250120001819635" style="zoom:33%;" />
+<img src="pics/image-20250120001819635.png" alt="image-20250120001819635" style="zoom:25%;" />
 
 左侧可以选择创建模板类型，选择“核心模板”，“Universal 3D”，在右侧点击“下载模板”。
 
-<img src="pics/image-20250120003714504.png" alt="image-20250120003714504" style="zoom:33%;" />
+<img src="pics/image-20250120003714504.png" alt="image-20250120003714504" style="zoom:25%;" />
 
 待下载结束后，可以修改合适的项目名称和位置，然后点击“创建项目”。（不要勾选“启用游戏云服务”和“使用团结云开发”）
-（注1：“游戏云服务”是 Unity 中国提供的一系列 *付费* 服务；“团结云开发”是指 Unity 自行开发的版本管理系统 PlasticSCM，由于安装过程繁琐且只适用于 Unity，感兴趣的同学们可自行了解。培训第一天我们讲解了 git，如果此前还没有使用 git 的经验，推荐借助软设开发的机会熟悉一下 git 的操作）
+（注1：“游戏云服务”是 Unity 中国提供的一系列 *付费* 服务；“团结云开发”是指 Unity 自行开发的版本管理系统 PlasticSCM，由于安装过程繁琐且只适用于 Unity，感兴趣的同学们可自行了解。培训第一天我们讲解了 git，如果此前没有过使用 git 的经验，推荐借助软设开发的机会熟悉一下 git 的操作）
 （注2：项目名和项目路径中最好不要有中文，可能会导致导出项目时因编码问题报错）
 
-<img src="pics/image-20250120003354507.png" alt="image-20250120003354507" style="zoom:33%;" />
+<img src="pics/image-20250120003354507.png" alt="image-20250120003354507" style="zoom:25%;" />
 
 等待一小段时间过后，我们进入了 Unity Editor 界面：
 
-<img src="pics/image-20250120005214146.png" alt="image-20250120005214146" style="zoom:33%;" />
+<img src="pics/image-20250120005214146.png" alt="image-20250120005214146" style="zoom:30%;" />
 
 此时，界面右侧显示的是 URP 模板的欢迎页面，点击中部的 "Remove Readme Assets" 按钮以移除相关内容。
 
@@ -127,31 +127,35 @@
 - Inspector（检查器）：检查当前所选 GameObject 或 Asset 的属性，为游戏对象添加、更改或删除组件等；
 - Scene（场景）、Game（游戏）：**核心操作面板**。场景面板用于调整游戏对象位置、大小等在游戏场景中的形态。游戏面板等于是对游戏功能的测试，能够准确体验游戏的运行状态。当我们在场景中完成全部的部署之后，点击运行按钮，就可以开始游戏（开始测试）。中断按钮可以暂停当前游戏并切换回场景面板以查看对象的实时属性。
 ### 2. 游戏对象
-#### 1. Main Camera
-- 项目初始化后，初始场景 Sample Scene 会自带游戏对象 Main Camera，用于将其范围内的游戏场景在游戏界面中显示出来。
+#### ① 初始对象
+- 项目初始化后，初始场景 Sample Scene 会自带游戏对象 Main Camera 和 Directional Light。Main Camera 用于将其范围内的游戏场景在游戏界面中显示出来，Directional Light 则作为场景的主光源（“太阳”）将场景照亮。
 - Main Camera 挂载的 Camera 组件可以设置摄像机的诸多属性（如画面大小），Transform 组件可以使摄像机在游戏进程中随时改变位置，获得灵活的运镜效果（这在3D游戏中尤为重要）
-#### 2. 静态对象的创建
-- Unity 提供了一系列简单的几何对象
+#### ② 静态对象的创建
+- Unity 提供了一系列简单的几何对象：
 
   <img src="pics/image-20250121005749877.png" alt="image-20250121005749877" style="zoom: 50%;" />
 
-  利用“场景”左上角提供的变换工具对模型进行变换，在检查器面板上观察图形的 Transform 组件变化
+  利用“场景”左上角的变换工具对模型进行变换，在检查器面板上观察图形的 Transform 组件变化：
 
   <img src="pics/image-20250121120405403.png" alt="image-20250121120405403" style="zoom:33%;" />
 
 - 如何添加素材作为游戏对象？
 
 1. 将素材导入到项目文件夹 Assets 下（注意尽可能按照资源类别细分素材并建立文件夹，如 Scenes、Scripts、Materials、Sprites、Models 等）
-2. 在检查器中设置需要导入的素材的相关属性（对于一般的 2D Sprite 图片素材，推荐更改过滤模式为“点”，压缩修改为“无”，更改后点击应用）
+2. 在检查器中设置需要导入的素材的相关属性。由于创建项目时选择了 3D 项目模板，需要手动将图片类型设置为 Sprite（精灵）。对于一般的 2D Sprite 图片素材，推荐更改 Filter Mode（过滤模式）为 “Point（点）”，Compression（压缩）修改为 “None（无）”，更改后点击 Apply（应用）。
 
-![image-20240130205638172](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130205638172.png)
+<img src="pics/image-20250124221436486.png" alt="image-20250124221436486" style="zoom:33%;" />
 
 3. 拖拽素材进入场景，可以看到“层级”视图中新增了游戏对象
 - 对于 2D Sprite 素材，需要手动切分帧图片和导入动画：
 
+  0. 由于创建项目时选择了 3D 项目模板，需要手动安装 2D Sprite 包。在 Package Manager（包管理器）窗口中如下图操作：
+
+     <img src="pics/image-20250124221915721.png" alt="image-20250124221915721" style="zoom:33%;" />
+
   1. 选择需要切分的帧图片，在检查器中选择 Sprite 模式为“多个”，点击“应用”后单击“Sprite Editor”进入 Sprite 编辑器，在左上角的切片中按照 cell 大小完成切分。
 
-  ![image-20240130205653050](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130205653050.png)
+  <img src="pics/image-20250124233540241.png" alt="image-20250124233540241" style="zoom:30%;" />
 
   2. 按照顺序选择合成动画的帧，拖拽至对应游戏对象上，Unity即可自动生成动画文件。
   3. 选择对应游戏对象后，在“动画”选项卡（注意不是“动画器”）即可播放对应动画。
@@ -184,22 +188,7 @@
 |         | （UI 元素）         | `Image`, `Button` , `Input` , `Dropdown` , `Layout` …        |
 |  粒子   | `ParticleSystem`    | 使游戏对象成为一个粒子（Particle）发射器                     |
 |   ……    | ……                  | ……                                                           |
-
-#### ① 物理系统
-
-值得注意的是，Unity内置了强大的物理系统，可以给对象挂载组件使其符合一定物理规律。
-
-- 给游戏对象挂载 Rigidbody 组件，观察游戏对象行为
-
-  ![image-20240130210029878](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130210029878.png)
-
-- 使游戏对象之间发生碰撞：两个对象均挂载了碰撞体（Collider / Collider 2D）组件，运动一方的 Rigidbody 组件碰撞检测设置为 “Continuous（持续）”
-
-  ![image-20240130205955717](D:\Users\hanzhifeng\AppData\Roaming\Typora\typora-user-images\image-20240130205955717.png)
-
-- 更改游戏对象物理材质（增加反弹、摩擦等）：新建物理材质，设置相关摩擦和弹力系数，替换掉Rigidbody 组件原物理材质。
-
-#### ② 动画系统
+#### ① 动画系统
 
 - 关于动画，更全面、系统、深层次的应用：动画状态机（Animator）
   -   状态，即动画的效果，比如人物静止的时候会有上下轻微浮动的动画，人物走的时候有个行走的动画，人物攻击的时候有个攻击的动画，跳跃的时候有个跳跃的动画，这些不同的动画状态，都是通过**状态机**连接起来的。
@@ -207,6 +196,20 @@
       -   人物什么时候从站立状态转而变成走路的状态 —— 按下 WSAD 键盘
       -   人物放完技能之后应该自动回到站立（挂机）状态，肯定不能一直放技能（有 CD 存在）
       -   这些控制条件由挂载在人物上的脚本，结合 Unity 的动画状态机控制
+
+#### ② 物理系统
+
+值得注意的是，Unity内置了强大的物理系统，可以给对象挂载组件使其符合一定物理规律。
+
+- 给游戏对象挂载 Rigidbody 组件，观察游戏对象行为
+
+  <img src="pics/image-20250124234549440.png" alt="image-20250124234549440" style="zoom: 40%;" />
+
+- 使游戏对象之间发生碰撞：两个对象均挂载了碰撞体（Collider / Collider 2D）组件，运动一方的 Rigidbody 组件碰撞检测设置为 “Continuous（持续）”
+
+  <img src="pics/image-20250124234710766.png" alt="image-20250124234710766" style="zoom:33%;" />
+
+- 更改游戏对象物理材质（增加反弹、摩擦等）：新建物理材质，设置相关摩擦和弹力系数，替换掉Rigidbody 组件原物理材质。
 
 #### ③ 更多……
 
@@ -257,7 +260,7 @@
 在 `Update` 函数中写入以下代码：
 
 ```csharp
-this.gameObject.GetComponent<Transform>().Translate(Vector3.forward * 0.01);
+this.gameObject.GetComponent<Transform>().Translate(Vector3.forward * 0.01f);
 ```
 
 为了便于初学者理解，这里故意采取了非常繁琐的表达方式，实际上可以简化：
@@ -269,7 +272,7 @@ this.gameObject.GetComponent<Transform>().Translate(Vector3.forward * 0.01);
 最后可得到最简形式：
 
 ```csharp
-transform.Translate(Vector3.forward * 0.01);
+transform.Translate(Vector3.forward * 0.01f);
 ```
 
 #### ③ 获取场景信息或其他资源
@@ -297,10 +300,21 @@ public class PlayerControl : MonoBehaviour
 输入速度数值，将目标物体通过拖动的方式拖到 Target 中，便完成了 Editor 侧的配置，接下来在 `Update` 中写入以下代码：
 
 ```csharp
-transform.Translate(Vector3.Normalize(transform.position - target.position) * speed * Time.deltaTime);
+transform.Translate(Vector3.Normalize(target.position - transform.position) * speed * Time.deltaTime);
 ```
 
 整个表达式只要有高中的数理基础就不难理解，主要注意 `speed * Time.deltaTime`，此处的 `Time.deltaTime`（$\Delta t$）是指 <u>当前帧与上一帧之间</u>  的时间间隔，由于帧率的不稳定，这一间隔也是不稳定的，因此需要通过这样一个接口来获取。这里的 `Time` 类可以被称作一种 “**工具类**“，Unity 提供了很多这样的类，以获取游戏运行中的各种信息或资源。
+
+除此之外，如果想要更方便地通过脚本控制物体的运动动画，可以使用快速、高效、完全类型安全的面向对象动画引擎 [DOTween](https://dotween.demigiant.com/)。例如，如果要使用 DOTween 控制目标在 2.5 秒内移动到世界坐标 $(1,2,3)$ 位置，只需写入如下代码：
+
+```csharp
+using DG.Tweening;
+// ...
+	void Start()
+    {
+        target.DOMove(new Vector3(1, 2, 3), 2.5f);
+    }
+```
 
 #### ④ 碰撞事件和触发事件
 游戏对象的碰撞体与其他碰撞体发生碰撞时会调用碰撞事件，包括：
@@ -332,15 +346,11 @@ transform.Translate(Vector3.Normalize(transform.position - target.position) * sp
 
 除了前面提到的 `Start()` , `Update()` , `OnCollisionEnter()` 等函数外，`MonoBehaviour` 中还有很多类似的 **回调函数（Callbacks）**或称 **事件函数（Event Functions）**。游戏运行时，在一个脚本对象从被创建到销毁的过程中，这些预定的事件函数会在一定的条件下、以一定的顺序被 Unity 调用，这就是 `MonoBehaviour` 脚本的**生命周期**。下图列出了一些主要的、常用的事件函数，以及它们在事件周期中被调用的时机和顺序，更详细的信息参见 Unity 官方文档中的[流程图](https://docs.unity3d.com/cn/2022.3/Manual/ExecutionOrder.html)和[表格](https://docs.unity3d.com/cn/current/ScriptReference/MonoBehaviour.html)：
 
-<img src="pics/Unity MonoBehaviour Main Lifecycle.svg" alt="image-20250121120405403" style="zoom:40%;" />
+<img src="pics/Unity MonoBehaviour Main Lifecycle.svg" alt="image-20250121120405403" style="zoom:45%;" />
 
 注意到，物理相关的过程处于一个独立的循环中，每个 **固定时间步长** 执行一次，而并非每帧执行一次。这是因为游戏中的帧率是不稳定的，如果物理引擎刷新率与帧率同步，当画面卡顿时，很可能导致物理相关的效果发生穿模等严重错误。（这里的表述可能会让读者误以为逻辑循环和物理循环运行在不同线程上，实际上并非如此，Unity 的逻辑系统是<u>单线程的</u>，欲知详情请见[此文档](https://docs.unity3d.com/2022.3/Documentation/Manual/TimeFrameManagement.html)）
 
 了解事件循环的具体顺序，可以帮助我们实现一些功能。例如，注意到 `LateUpdate()` 在动画之后、渲染之前执行，因此如果我们在 `LateUpdate` 中修改物体的位置，就可以覆盖掉动画组件的影响。
-
-### 3. 小型实战项目
-
-不知道做不做。如果足够小型的话，应该也是来得及的？
 
 ## 五、视觉效果：材质与渲染
 
@@ -350,16 +360,16 @@ transform.Translate(Vector3.Normalize(transform.position - target.position) * sp
 
 #### ⓪ 概念
 
-<img src="pics/SRP Minimal.svg" alt="SRP Minimal" style="zoom:60%;" />
+<img src="pics/SRP Minimal.svg" alt="SRP Minimal" style="zoom:42%;" />
 
-<img src="pics/SRP Detailed.svg" alt="SRP Detailed" />
+<img src="pics/SRP Detailed.svg" alt="SRP Detailed" style="zoom:70%;" />
 
 （以上两张图分别出自 2024 暑培 / 寒培《实时渲染基础魔法》）
 
 * 本文不再强调“可编程”，因为事实上所谓的“固定渲染管线”早在 2000 年代就基本消失了。
   * 2008 年 OpenGL 3.0 将固定渲染管线标记为过时（deprecated），2009 年 OpenGL 3.2 完全移除固定渲染管线。
 
-<img src="pics/Unity 渲染管线.png" alt="Unity 渲染管线" style="zoom:40%;" />
+<img src="pics/Unity 渲染管线.png" alt="Unity 渲染管线" style="zoom:30%;" />
 
 * Unity 的 Scriptable Rendering Pipeline（SRP）中的 "Scriptable" 实际上也并不是指顶点着色器和片元着色器的"可编程"，因为此前的内置（Built-In）渲染管线显然也可以对着色器进行编程，它并不是所谓的“固定渲染管线”。此处的”可编程“指的是在着色器之外，对整个渲染流程进行控制，当然这些就并不在本次教程的范围内了。
 
@@ -371,7 +381,7 @@ transform.Translate(Vector3.Normalize(transform.position - target.position) * sp
 
 |                   模型空间（Object Space）                   |                   世界空间（World Space）                    |                    相机空间（View Space）                    |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="pics/image-20250122181433789.png" alt="image-20250122181433789" style="zoom: 25%;" /> | <img src="pics/image-20250122181441125.png" alt="image-20250122181441125" style="zoom: 25%;" /> | <img src="pics/image-20250122181447153.png" alt="image-20250122181447153" style="zoom: 25%;" /> |
+| <img src="pics/image-20250122181433789.png" alt="image-20250122181433789"/> | <img src="pics/image-20250122181441125.png" alt="image-20250122181441125"/> | <img src="pics/image-20250122181447153.png" alt="image-20250122181447153" /> |
 
 以上三个空间坐标间的转换较简单，仅涉及刚体变换（旋转、平移）
 
@@ -382,7 +392,7 @@ transform.Translate(Vector3.Normalize(transform.position - target.position) * sp
 以上转换涉及一些较复杂的透视变换（对于正交投影，则只是简单的拉伸变换），最后还会由归一化的设备坐标变换到实际的屏幕空间坐标。
 
 > 注 1：除 NDC 和屏幕空间坐标外，这里所有的变换矩阵和向量实际上都是四维的。为什么？[Wikipedia:齐次坐标](https://zh.wikipedia.org/wiki/齐次坐标)
-> 注 2：从裁剪空间到NDC、屏幕空间的变换由 GPU 和驱动程序等自动完成，因此实际 Shader 中只需变换到裁切空间即可。
+> 注 2：从裁剪空间到 NDC、屏幕空间的变换由 GPU 和驱动程序等自动完成，因此实际 Shader 中只需变换到裁切空间即可。
 
 理论上来说，所有与模型的几何信息相关，并且 **不改变顶点数量** 的功能，都可以由顶点着色器实现，例如，可以根据时间等输入来动态地改变顶点位置，以实现波动、变形等效果。除此之外，在实际的工程应用中，顶点着色器也可以用于将更多的几何数据传递给片元着色器，以备处理。下一节中，我们将用 ShaderGraph 可视化编程的形式编写顶点着色器，实现模型描边功能。
 
@@ -398,12 +408,14 @@ transform.Translate(Vector3.Normalize(transform.position - target.position) * sp
 
 利用 BRDF 对光照信息的计算通常就发生在此步骤：
 
-$$L(\boldsymbol{x},\boldsymbol{\omega}_o)
+$$
+L(\boldsymbol{x},\boldsymbol{\omega}_o)
 =\mathcal{K}_\text{S} L + L_\text{r}^\text{e}(\boldsymbol{x})
 =L_\text{r}^\text{e}(\boldsymbol{x},\boldsymbol{\omega}_o)
 +\int_\Omega f_\text{r}(\boldsymbol{x}, -\boldsymbol{\omega}_i \rightarrow \boldsymbol{\omega}_o)
 \cdot L(\boldsymbol{x},\boldsymbol{\omega}_i)
-\cdot \cos\theta_i \, \mathrm{d} \boldsymbol{\omega}_i$$
+\cdot \cos\theta_i \, \mathrm{d} \boldsymbol{\omega}_i
+$$
 
 理论上来说，所有与颜色（RGB<u>A</u>）有关的功能，都可以由片元着色器实现。<s>后文将用 HLSL 编写片元着色器，实现非真实感渲染中的 Toon Shading（卡通着色）功能。</s>（鸽了x）
 
@@ -419,11 +431,11 @@ $$L(\boldsymbol{x},\boldsymbol{\omega}_o)
 
 在 Project 窗口，右键 → Create（创建）→ Shader Graph → URP → Unlit Shader Graph（无光照着色器），命名为 Vertex Offset Outline
 
-<img src="pics/image-20250122215532665.png" alt="image-20250122215532665" style="zoom: 33%;" />
+<img src="pics/image-20250122215532665.png" alt="image-20250122215532665" style="zoom: 30%;" />
 
 双击打开着色器，进入着色器编辑界面：
 
-<img src="pics/image-20250123000848010.png" alt="image-20250123000848010" style="zoom:28%;" />
+<img src="pics/image-20250123000848010.png" alt="image-20250123000848010" style="zoom:20%;" />
 
 ShaderGraph 是以节点和连线组成的，创建后默认存在两个主节点，即 Unlit Shader Graph 默认实现的顶点着色器和无光照的片元着色器，可以通过将其他节点到这两个主着色器节点来实现想要的效果。
 
@@ -446,9 +458,9 @@ float3 main() {
 
 按照以上方法，如下图所示创建并连接节点，并在右上角的 Graph Settings 中将 Render Face 修改为 “Back”。保存后，将对应的材质作为第二个材质放入 MeshRenderer，便可实现所需效果。
 
-<img src="pics/image-20250123230126198.png" alt="image-20250123230126198" style="zoom:28%;" />
+<img src="pics/image-20250123230126198.png" alt="image-20250123230126198" style="zoom:20%;" />
 
-<img src="pics/image-20250123005828219.png" alt="image-20250123005828219" style="zoom: 35%;" />
+<img src="pics/image-20250123005828219.png" alt="image-20250123005828219" style="zoom: 25%;" />
 
 ### 2. PBR（Physically-Based-Rendering）工作流
 
@@ -456,19 +468,23 @@ float3 main() {
 
 回顾 BRDF 表示的渲染方程：
 
-$$L(\boldsymbol{x},\boldsymbol{\omega}_o)
+$$
+L(\boldsymbol{x},\boldsymbol{\omega}_o)
 =L_\text{r}^\text{e}(\boldsymbol{x},\boldsymbol{\omega}_o)
 +\int_\Omega f_\text{r}(\boldsymbol{x}, -\boldsymbol{\omega}_i \rightarrow \boldsymbol{\omega}_o)
 \cdot L(\boldsymbol{x},\boldsymbol{\omega}_i)
-\cdot (\boldsymbol{n} \cdot \boldsymbol\omega_i)\, \mathrm{d} \boldsymbol{\omega}_i$$
+\cdot (\boldsymbol{n} \cdot \boldsymbol\omega_i)\, \mathrm{d} \boldsymbol{\omega}_i
+$$
 
 如果已知发射部分（即 $L_\text{r}^\text{e}$）和 BRDF（即 $f_\text{r}$），我们便能写出片元着色器，让渲染管线帮我们计算以上表达式。现在的问题是，如何表示这两者，即：如何对物理表面建模？
 
 图形学一讲中介绍了 Lambert 漫射模型和 GGX 高光模型。现实生活中，一个表面显然并不会非黑即白地表现为“漫射”和“高光”中的一种，而往往是两种属性的混合，因此我们用这两个模型的加权求和来表示 BRDF，这便是实时渲染中常用的 Cook-Torrance BRDF：
 
-$$f_\text{r}(\boldsymbol{x}, -\boldsymbol{\omega}_i \rightarrow \boldsymbol{\omega}_o)
+$$
+f_\text{r}(\boldsymbol{x}, -\boldsymbol{\omega}_i \rightarrow \boldsymbol{\omega}_o)
 = \frac{\boldsymbol\rho_\text{d}(\boldsymbol{x})}{\pi}
-+ \frac{\boldsymbol\rho_\text{s}(\boldsymbol{x}) \cdot F\cdot D_{\alpha} \cdot G_{\alpha} }{4(\boldsymbol{n}\cdot\boldsymbol\omega_i)(\boldsymbol{n}\cdot\boldsymbol\omega_o)}$$
++ \frac{\boldsymbol\rho_\text{s}(\boldsymbol{x}) \cdot F\cdot D_{\alpha} \cdot G_{\alpha} }{4(\boldsymbol{n}\cdot\boldsymbol\omega_i)(\boldsymbol{n}\cdot\boldsymbol\omega_o)}
+$$
 
 其中， $\boldsymbol\rho_\text{d}$ 表示漫射颜色， $\boldsymbol\rho_\text{s}$ 表示高光强度， $\alpha$ 表示表面的粗糙程度，它们都与空间位置 $\boldsymbol{x}$ 有关。实际上，漫射颜色就是我们平时一般所说的模型上的“贴图”。以此类比，高光度、粗糙度、自发光颜色等与位置有关的参数，也都可以用 uv 坐标下的纹理贴图（灰度图）的形式来表达、存储。通过各种方式生成并使用各种物理参数纹理，并结合基于物理的光照模型，以渲染出具有真实感和物理一致性的材质表现，这一完整流程便被称为 **PBR 工作流**。
 
@@ -497,6 +513,8 @@ $$f_\text{r}(\boldsymbol{x}, -\boldsymbol{\omega}_i \rightarrow \boldsymbol{\ome
 
 （→ 实操环节）
 
+<img src="pics/image-20250124233123364.png" alt="image-20250124233123364" style="zoom:20%;" />
+
 ### 3. 后处理
 
 图形学一讲中已经介绍过后处理技术，它实际上是为了弥补光栅管线的不真实性而诞生的一种“补正措施”，由于它的实质是对二维图像的处理与合成，可以将其理解为某种“滤镜”；当然，在实际游戏开发中，除了追求真实性，一些特殊的视觉特效也可以利用后处理的手段实现。
@@ -505,39 +523,53 @@ Unity 中的后处理系统主要由以下模块配置：
 
 - Post-process Volume（后处理体积，SRP 中简称为 Volume）及其对应配置文件
   - 主要包括辉光（Bloom）、景深（Depth of View）、运动模糊（Motion Blur）及各种调色等接近于纯粹图像处理的后处理效果
-  - “体积”的含义：在不同空间范围内施加不同的后处理效果，默认使用 Global Volume（全局体积）
+  - “体积”的含义：在不同空间范围施加不同后处理效果，默认使用 Global Volume（全局体积）
 
-    （如果使用了官方汉化包，你会发现此处的 Volume 被 Unity *机翻* 成了音量。）
+    > 如果使用了官方汉化包，你会发现此处的 Volume 被 Unity *机翻* 成了“音量”。
   
 - Settings 文件夹内 Renderer 配置文件中的 Renderer Feature 配置项
   - 主要包括屏幕空间环境光遮蔽（SSAO）等较复杂的后处理效果，以及用于附加自定义的后处理效果
 
+<div style="text-align: center"><img src="pics/image-20250121130327223.png" alt="image-20250121130327223" style="zoom:25%;" /><img src="pics/image-20250121130823344.png" alt="image-20250121130823344" style="zoom: 25%;" /></div>
 
-<div style="text-align: center"><img src="pics/image-20250121130327223.png" alt="image-20250121130327223" style="zoom:33%;" /><img src="pics/image-20250121130823344.png" alt="image-20250121130823344" style="zoom: 33%;" /></div>
-
-如图所示，在 URP 模板自带的 Global Volume 和 高保真度 Renderer 中，分别已经预先配置了 Tonemapping（色调映射）、Bloom（辉光）、Vignette（光晕）三个后处理 Override 和 Screen Space Ambient Occlusion（屏幕空间环境光遮蔽）一个渲染特性。可以勾选属性左侧的复选框，然后修改对应的属性配置；点击下方的 Add Override / Add Renderer Feature，即可添加并配置新的后处理效果。
+如图所示，在 URP 模板自带的 Global Volume 和 高保真度 Renderer 中，分别已经预先配置了 Tone-mapping（色调映射）、Bloom（辉光）、Vignette（光晕）三个后处理 Override 和 Screen Space Ambient Occlusion（屏幕空间环境光遮蔽）一个渲染特性。可以勾选属性左侧的复选框，然后修改对应的属性配置；点击下方的 Add Override / Add Renderer Feature，即可添加并配置新的后处理效果。
 
 例如，在 Global Volume 下点击 Add Override，选择 Post-processing → Chromatic Aberration，勾选 Intensity（强度）左侧的复选框，拖动滑动条，即可观察到画面边缘出现了明显的色散效果。
 
-<img src="pics/image-20250121132118218.png" alt="image-20250121132118218" style="zoom:33%;" />
+<img src="pics/image-20250121132118218.png" alt="image-20250121132118218" style="zoom:20%;" />
 
 ShaderGraph 中包含了 Fullscreen Shader Graph 预设，允许以片元着色器的形式自定义后处理效果，由于时间关系就不展开了。
 
-### 4. 自学部分：ShaderLab & HLSL
+<img src="pics/image-20250125011050848.png" alt="image-20250125011050848" style="zoom:22%;" />
 
-待补充……
+### 4. ShaderLab & HLSL
+
+<img src="pics/image-20250125001642235.png" alt="image-20250125001642235" style="zoom:20%;" />
+
+<s>（鸽了x）</s> 可自行参考下发的示例素材及以下文档：
 
 - [ShaderLab - Unity 手册](https://docs.unity3d.com/cn/2022.3/Manual/SL-Reference.html)
 - [Unity 中的 HLSL - Unity 手册](https://docs.unity3d.com/cn/2022.3/Manual/SL-ShaderPrograms.html)
+- [Writing custom shaders | Universal RP | 12.1.15](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@12.1/manual/writing-custom-shaders-urp.html)
 - [HLSL 参考 | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/win32/direct3dhlsl/dx-graphics-hlsl-reference)
 
 ## 六、构建并导出
 
-TODO
+- 在完成 Unity 项目后，可以通过选择“File（文件）→  Build Settings（生成设置）”进行项目导出：
+
+<img src="pics/image-20250125005747878.png" alt="image-20250125005747878" style="zoom:15%;" />
+
+- 左侧选择目标导出平台，这里选择 “Windows、Mac、Linux 平台”，并在上方勾选需要导出的场景，点击 “Build（生成）”，选择目标导出文件夹（不能直接选择桌面进行导出），稍作等待后便可在文件夹中生成对应 .exe 文件：
+
+<div style = "text-align: center"><img src="pics/image-20250125005837932.png" alt="image-20250125005837932" style="zoom:15%;" /><img src="pics/image-20250125005850044.png" alt="image-20250125005850044" style="zoom:25%;" /></div>
+
+- 最后，双击 .exe 文件，或在 Unity 中选择“Build and Run（构建和运行）”，项目就可以正常运行：
+
+  <img src="pics/image-20250125010025201.png" alt="image-20250125010025201" style="zoom:15%;" />
 
 ## 七、写在最后
 
-作为一个最简单的入门教程，本篇基本只是让大家认识 Unity，下载安装 Unity、了解 Unity的基本界面和用法、并结合实例告诉大家如何使用图形学中的一些技术。作为一个工具型软件，最好的学习方法永远是实战，推荐大家直接按照教程开发一个小项目，体会到游戏开发的乐趣。
+作为一个简单的入门教程，本篇基本只是让大家认识 Unity，下载安装 Unity，了解 Unity的基本界面和使用的核心方法、思想，并结合实例告诉大家如何使用图形学中的一些渲染技术。作为一个工具型软件，最好的学习方法永远是实战，推荐大家直接按照教程开发一个小项目，体会到游戏开发的乐趣。
 
 下面是一些实用的文档和教程，希望对大家有所帮助：
 
